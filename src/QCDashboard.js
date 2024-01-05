@@ -99,7 +99,7 @@ const QCDashboard = () => {
 
         for (const row of dailyData) {
           const rowData = [
-            row.rdng_ocr_status_changed_by,
+            row.mtr_excep_img,
             row.tot_count,
             row.date_qc,
           ];
@@ -172,7 +172,7 @@ const QCDashboard = () => {
 
         for (const row of daywiseData) {
           const rowData = [
-            row.rdng_ocr_status_changed_by,
+            row.mtr_excep_img,
             row.tot_count,
             row.date_qc,
           ];
