@@ -91,8 +91,6 @@ const LoginPage = () => {
           <button type="button" onClick={handleLogin}>
             Login
           </button>
-
-          {/* Modal for options */}
           <Modal
             isOpen={isModalOpen}
             onRequestClose={closeModal}
@@ -100,16 +98,20 @@ const LoginPage = () => {
             overlayClassName="overlay"
           >
             <h2>Select an option</h2>
-            <Stack direction="column" spacing={3}>
-              <Stack direction="row" spacing={4} gap={1}>
+            <div direction="column" style={{ gap: 4 }}>
+              <div
+                style={{ display: "flex", gap: "40px", flexDirection: "row" }}
+              >
                 <button onClick={handleDownloadMRList}>Download MRList</button>
                 <button onClick={handleQCDashboard}>
                   Quality Check Dashboard
                 </button>
-              </Stack>
+              </div>
               <br></br>
-              <button onClick={closeModal}>Close</button>
-            </Stack>
+              <button type="button" onClick={closeModal}>
+                Close
+              </button>
+            </div>
           </Modal>
         </form>
       )}

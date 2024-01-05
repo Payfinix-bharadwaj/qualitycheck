@@ -11,7 +11,12 @@ const QCDashboard = () => {
   const [tableData, setTableData] = useState([]);
   const [reportdata, setReportData] = useState([]);
   const [userdata, setUserData] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [qcloading, setQCLoading] = useState(false);
+  const [reportloading, setReportLoading] = useState(false);
+  const [userloading, setUserLoading] = useState(false);
+  const [monthloading, setMonthLoading] = useState(false);
+  const [daywiseloading, setDayWiseLoading] = useState(false);
+  const [dailyloading, setDailyLoading] = useState(false);
   const [selectedMonth, setSelectedMonth] = useState("");
   const [selectedyear, setSelectedYear] = useState("");
   const [startDate, setStartDate] = useState("");
@@ -59,7 +64,7 @@ const QCDashboard = () => {
   };
 
   const qcdashboard = async (value) => {
-    setLoading(true);
+    setQCLoading(true);
     console.log("1");
     try {
       const { month, year } = value;
@@ -76,12 +81,12 @@ const QCDashboard = () => {
     } catch (err) {
       console.log(err);
     } finally {
-      setLoading(false);
+      setQCLoading(false);
     }
   };
 
   const dailyreport = async () => {
-    setLoading(true);
+    setDailyLoading(true);
     try {
       const response = await axiosInstance.get("/qcdailyreport1/");
       const dailyData = response.data.data;
@@ -107,17 +112,17 @@ const QCDashboard = () => {
         const fileName = "dailydata.xlsx";
         writeFile(wb, fileName);
 
-        setLoading(false);
+        setDailyLoading(false);
       }
     } catch (err) {
       console.log(err);
     } finally {
-      setLoading(false);
+      setDailyLoading(false);
     }
   };
 
   const monthlyreport = async () => {
-    setLoading(true);
+    setMonthLoading(true);
     try {
       const response = await axiosInstance.get("/qcmonthlyreport1/");
       const monthlyData = response.data.data;
@@ -149,12 +154,12 @@ const QCDashboard = () => {
     } catch (err) {
       console.log(err);
     } finally {
-      setLoading(false);
+      setMonthLoading(false);
     }
   };
 
   const daywisereport = async () => {
-    setLoading(true);
+    setDayWiseLoading(true);
     try {
       const response = await axiosInstance.get("/qcdaywisereport1/");
       const daywiseData = response.data.data;
@@ -183,12 +188,12 @@ const QCDashboard = () => {
     } catch (err) {
       console.log(err);
     } finally {
-      setLoading(false);
+      setDayWiseLoading(false);
     }
   };
 
   const qcreportdata = async (value) => {
-    setLoading(true);
+    setReportLoading(true);
     try {
       const { startDate, endDate, month, year } = value;
       const monthyear = month || "";
@@ -203,12 +208,12 @@ const QCDashboard = () => {
     } catch (err) {
       console.log(err);
     } finally {
-      setLoading(false);
+      setReportLoading(false);
     }
   };
 
   const qcuserdata = async (value) => {
-    setLoading(true);
+    setUserLoading(true);
     try {
       const { month, year } = value;
       const formattedMonth = month ? month.split("-")[0] : "";
@@ -223,7 +228,7 @@ const QCDashboard = () => {
     } catch (err) {
       console.log(err);
     } finally {
-      setLoading(false);
+      setUserLoading(false);
     }
   };
 
@@ -285,7 +290,12 @@ const QCDashboard = () => {
           <div>Loading...</div>
         )}
       </div>
-      {loading && (
+      {(qcloading ||
+        reportloading ||
+        monthloading ||
+        userloading ||
+        daywiseloading ||
+        dailyloading) && (
         <div style={{ justifyContent: "center", marginTop: "20px" }}>
           <TailSpin
             height="50"
