@@ -67,7 +67,7 @@ const LoginPage = () => {
               type="text"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
-              placeholder="@amlansarkar"
+              // placeholder="@amlansarkar"
             />
           </label>
           <br />
@@ -77,7 +77,7 @@ const LoginPage = () => {
               type={showPassword ? "text" : "password"}
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              placeholder="Sujanix#123"
+              // placeholder="Sujanix#123"
             />
             <button
               type="button"
