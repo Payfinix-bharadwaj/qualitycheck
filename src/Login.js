@@ -33,14 +33,11 @@ const LoginPage = () => {
   const handleDownloadMRList = () => {
     setIsMRList(true);
     console.log("Downloading MRList");
-    // You can render <MRList /> or navigate to another page if needed
   };
 
   const handleQCDashboard = () => {
     setQCDashboard(true);
     console.log("Opening Quality Check Dashboard");
-    // Render <QCDashboard />
-    // You can navigate to another page or handle it accordingly
   };
 
   return (
@@ -67,7 +64,6 @@ const LoginPage = () => {
               type="text"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
-              // placeholder="@amlansarkar"
             />
           </label>
           <br />
@@ -77,7 +73,6 @@ const LoginPage = () => {
               type={showPassword ? "text" : "password"}
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              // placeholder="Sujanix#123"
             />
             <button
               type="button"
